@@ -227,20 +227,23 @@ public class SynchronizedQueue {
             // interesting results will occur if you start the
             // consumer first.
 
-            producer.start();
+            //producer.start();
             consumer.start();
+            producer.start();
             
             // Give the Threads a chance to run before interrupting
             // them.
             Thread.sleep(100);
 
             // TODO - you fill in here to interrupt the threads.
-            producer.interrupt();
+           // producer.interrupt();
             consumer.interrupt();
+            producer.interrupt();
             // TODO - you fill in here to wait for the threads to
             // exit.
-            producer.wait();
-            consumer.wait();
+           // producer.wait();
+            consumer.join();
+            producer.join();
             
             // Do some sanity checking to see if the Threads work as
             // expected.
